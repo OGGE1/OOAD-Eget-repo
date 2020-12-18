@@ -98,6 +98,7 @@ public class Controller {
 
             if (game.getCurrentRound() == Game.ROUNDS_AMOUNT-1 && game.getCurrentThrow() == Game.THROWS_AMOUNT-1){
                 setFinalScore();
+                int k = JOptionPane.showConfirmDialog(null,  "Nytt spel?");
             }
         });
     }
