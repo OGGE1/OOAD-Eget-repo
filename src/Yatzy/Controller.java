@@ -6,6 +6,7 @@ import java.awt.*;
 public class Controller {
 
     private YatzyWindow window;
+    private HighScoreWindow hcWindow; //NEW
     private Game game;
 
     public Controller() {
@@ -98,17 +99,21 @@ public class Controller {
 
             if (game.getCurrentRound() == Game.ROUNDS_AMOUNT-1 && game.getCurrentThrow() == Game.THROWS_AMOUNT-1){
                 setFinalScore();
-                int k = JOptionPane.showConfirmDialog(null,  "New game?");
-                System.out.println(k);
-
-                if (k == 0) {
-                    window.dispose();
-                    new Yatzy();
-                } else if (k == 1)
-                    System.exit(0);
-                
+                newGame();
             }
         });
+    }
+
+    //NEW ADDITIONS -- Player gets to choose to play a new game when round is over
+    public void newGame() {
+        int k = JOptionPane.showConfirmDialog(null,  "New game?");
+        System.out.println(k);
+
+        if (k == 0) {
+            window.dispose();
+            new Yatzy();
+        } else if (k == 1)
+            System.exit(0);
     }
 
     public void setUpStartButtonListener() {
@@ -130,9 +135,13 @@ public class Controller {
         });
     }
 
+    //NEW NEW NEW NEW NEW NEW NEW
     public void setUpHighscoreButtonListener(){
         window.getYatzyPanel().getShowScoreButton().addActionListener(l -> {
-            new HighScoreWindow(game.database.getListOfScores());
+            if(hcWindow != null){
+                hcWindow.dispose();
+            }
+            hcWindow = new HighScoreWindow(game.database.getListOfScores());
         });
     }
 
