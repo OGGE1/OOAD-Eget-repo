@@ -98,7 +98,15 @@ public class Controller {
 
             if (game.getCurrentRound() == Game.ROUNDS_AMOUNT-1 && game.getCurrentThrow() == Game.THROWS_AMOUNT-1){
                 setFinalScore();
-                int k = JOptionPane.showConfirmDialog(null,  "Nytt spel?");
+                int k = JOptionPane.showConfirmDialog(null,  "New game?");
+                System.out.println(k);
+
+                if (k == 0) {
+                    window.dispose();
+                    new Yatzy();
+                } else if (k == 1)
+                    System.exit(0);
+                
             }
         });
     }
