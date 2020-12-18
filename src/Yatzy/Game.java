@@ -50,16 +50,40 @@ public abstract class Game {
         }
     }
 
+    // NEW ADDITIONS
     public int calculateRoundScore(){
         int sum = 0;
+        boolean[] check = new boolean[5];
+        System.out.println(currentRound +1);
 
         for(var die : dice){
             if(die.getValue() == currentRound+1){
                 sum += die.getValue();
             }
         }
+
+        for (int i = 0; i < dice.length; i++) {
+            if (dice[i].getValue() == currentRound +1) {
+                check[i] = true;
+            }
+        }
+
+        if (isYatzy(check)) {
+            sum += 10;
+            System.out.println("Yatzy!");
+        }
+
         currentScore += sum;
         return sum;
+    }
+
+    //NEW ADDITION
+    public boolean isYatzy(boolean[] arr) {
+        for (var e : arr) {
+            if (!e)
+                return false;
+        }
+        return true;
     }
 
     public boolean isBonusQualified(){
