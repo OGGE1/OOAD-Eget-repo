@@ -11,12 +11,13 @@ public class YatzyPanel extends JPanel {
     // Panels
     private JPanel eastPanel = new JPanel(new BorderLayout());
     private JLabel tableLabel = new JLabel(" Omgång      Poäng ");
-    private JPanel buttonPanel = new JPanel(new GridLayout(1,3));
+    private JPanel buttonPanel = new JPanel(new GridLayout(1,4));
     private JPanel dicePanel = new JPanel(new GridLayout(3,3));
 
     // Buttons
     private JButton rollButton = new JButton("Starta omgång");
     private JButton showScoreButton = new JButton("Visa highscore");
+    private JButton tutorialButton = new JButton("Hjälp");
 
     // ScoreBoard
     private JPanel scoreBoard = new JPanel(new GridLayout(1,2));
@@ -51,6 +52,7 @@ public class YatzyPanel extends JPanel {
         eastPanel.add(scoreBoard, BorderLayout.CENTER);
         eastPanel.add(tableLabel, BorderLayout.NORTH);
         buttonPanel.add(rollButton);
+        buttonPanel.add(tutorialButton);
         buttonPanel.add(showScoreButton);
         buttonPanel.setPreferredSize(new Dimension(500,40));
         this.add(buttonPanel,BorderLayout.SOUTH);
@@ -123,5 +125,9 @@ public class YatzyPanel extends JPanel {
 
     public JToggleButton[] getDiceButtons() {
         return diceButtons;
+    }
+
+    public JButton getTutorialButton() {
+        return tutorialButton;
     }
 }

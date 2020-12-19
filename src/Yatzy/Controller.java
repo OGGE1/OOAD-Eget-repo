@@ -7,19 +7,17 @@ public class Controller {
 
     private YatzyWindow window;
     private HighScoreWindow hcWindow; //NEW
+    private TutorialWindow tutWindow;
     private Game game;
 
     public Controller() {
         this.window = new YatzyWindow();
         setUpStartPanelListener();
-
         setUpStartButtonListener();
-
         setUpRollButtonListener();
-
         setUpHighscoreButtonListener();
-
         setUpSelectedDieColorListener();
+        setUpTutorialListener();
     }
 
     public void setUpStartPanelListener(){
@@ -66,6 +64,15 @@ public class Controller {
                 window.getStartPanel().setBackground(
                         window.getStartPanel().getColor());
             }
+        });
+    }
+
+    public void setUpTutorialListener() {
+        window.getYatzyPanel().getTutorialButton().addActionListener(l -> {
+            if(tutWindow != null){
+                tutWindow.dispose();
+            }
+            tutWindow = new TutorialWindow();
         });
     }
 
